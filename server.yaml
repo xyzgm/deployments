@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: server
+  labels:
+    app: guestbook
+    tier: server
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: server
+  template:
+    metadata:
+      labels:
+        tier: server
+    spec:
+      containers:
+      - name: httpd
+        image: httpd
